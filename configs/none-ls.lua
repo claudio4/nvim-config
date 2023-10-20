@@ -5,7 +5,7 @@ local lint = null_ls.builtins.diagnostics
 
 local sources = {
   formatting.prettier,
-  lint.eslint,
+  lint.eslint_d,
 
   formatting.stylua,
 

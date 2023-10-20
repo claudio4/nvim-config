@@ -13,7 +13,7 @@ local M = {
     "html-lsp",
     "typescript-language-server",
     "prettier",
-    "eslint",
+    "eslint_d",
     "js-debug-adapter",
 
     -- docker
