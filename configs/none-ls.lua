@@ -4,10 +4,12 @@ local formatting = null_ls.builtins.formatting
 local lint = null_ls.builtins.diagnostics
 
 local sources = {
-   formatting.prettier,
-   formatting.stylua,
+  formatting.prettier,
+  lint.eslint,
 
-   lint.shellcheck,
+  formatting.stylua,
+
+  lint.shellcheck,
 }
 
 null_ls.setup {

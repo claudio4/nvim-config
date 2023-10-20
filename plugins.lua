@@ -27,6 +27,7 @@ local plugins = {
   {
     "nvimtools/none-ls.nvim",
     after = "nvim-lspconfig",
+    event = "VeryLazy",
     config = function ()
       require "custom.configs.none-ls"
     end,
@@ -34,6 +35,10 @@ local plugins = {
   {
     "mfussenegger/nvim-dap",
     lazy = true,
+    config = function ()
+      require "custom.configs.dap"
+      require("core.utils").load_mappings("dap")
+    end
   },
   {
     "saecki/crates.nvim",
@@ -64,6 +69,9 @@ local plugins = {
       },
       {
         "<leader>dr", "<cmd>DapContinue<CR>", desc = "Run or continue the debugger"
+      },
+      {
+        "<F5>", "<cmd>DapContinue<CR>", desc = "Run or continue the debugger"
       }
     },
     config = function ()
