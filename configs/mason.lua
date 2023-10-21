@@ -37,6 +37,9 @@ local M = {
     -- sql
     "sqlfluff",
     "sqls",
+
+    -- shell
+    "shellcheck",
   }
 }
 
