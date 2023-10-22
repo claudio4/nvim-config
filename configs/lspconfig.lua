@@ -4,7 +4,17 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 local servers = {
-  "html", "cssls", "tsserver", "rust_analyzer", "gopls", "yamlls", "dockerls", "vimls"
+  "cssls",
+  "dockerls",
+  "gopls",
+  "html",
+  "jsonls",
+  "marksman",
+  "rust_analyzer",
+  "sqlls",
+  "tsserver",
+  "vimls",
+  "yamlls",
 }
 
 for _, lsp in ipairs(servers) do

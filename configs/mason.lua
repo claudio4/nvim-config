@@ -1,5 +1,8 @@
 local M = {
   ensure_installed = {
+    -- general
+    "codespell",
+
     -- markdown
     "marksman",
     "misspell",
@@ -15,6 +18,7 @@ local M = {
     "prettier",
     "eslint_d",
     "js-debug-adapter",
+    "json-lsp",
 
     -- docker
     "dockerfile-language-server",
@@ -32,11 +36,11 @@ local M = {
     -- yaml
     "yaml-language-server",
     "yamlfmt",
-    "yamllint",
+    -- "yamllint",
 
     -- sql
     "sqlfluff",
-    "sqls",
+    "sqlls",
 
     -- shell
     "shellcheck",
