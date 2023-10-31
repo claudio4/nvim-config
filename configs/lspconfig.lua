@@ -12,7 +12,7 @@ local servers = {
   "marksman",
   "rust_analyzer",
   "sqlls",
-  "tsserver",
+  -- "tsserver", Handle by typescript-tools plugin
   "vimls",
   "yamlls",
 }

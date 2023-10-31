@@ -41,6 +41,14 @@ local plugins = {
     end
   },
   {
+    "pmizio/typescript-tools.nvim",
+    ft = "typescript",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = function ()
+      return require "custom.config.typescript"
+    end,
+  },
+  {
     "saecki/crates.nvim",
     event = { "BufRead Cargo.toml" },
     dependencies = { 'nvim-lua/plenary.nvim' },
