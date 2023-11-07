@@ -42,10 +42,10 @@ local plugins = {
   },
   {
     "pmizio/typescript-tools.nvim",
-    ft = "typescript",
+    ft = { "typescript", "javascript"},
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = function ()
-      return require "custom.config.typescript"
+      return require "custom.configs.typescript"
     end,
   },
   {
