@@ -1,5 +1,12 @@
 local plugins = {
   {
+    "ggandor/leap.nvim",
+    lazy = false,
+    config = function ()
+      require('leap').add_default_mappings()
+    end
+  },
+  {
     "hrsh7th/nvim-cmp",
     opts = function()
       local conf = require "plugins.configs.cmp"
@@ -85,7 +92,20 @@ local plugins = {
     config = function ()
       require "custom.configs.dap-ui"
     end
-  }
+  },
+  {
+  "ray-x/go.nvim",
+  dependencies = {
+    "neovim/nvim-lspconfig",
+    "nvim-treesitter/nvim-treesitter",
+  },
+  config = function()
+      require "custom.configs.go"
+  end,
+  ft = {"go", 'gomod'},
+  build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+}
+
 }
 
 

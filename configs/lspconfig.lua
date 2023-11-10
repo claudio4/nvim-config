@@ -6,7 +6,7 @@ local lspconfig = require "lspconfig"
 local servers = {
   "cssls",
   "dockerls",
-  "gopls",
+  -- "gopls", Handled by ray-x/go plugin
   "html",
   "jsonls",
   "marksman",
