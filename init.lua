@@ -1,10 +1,14 @@
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
+vim.opt.expandtab = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.termguicolors = true
+vim.opt.mouse = "a"
+vim.wo.number = true
+vim.wo.relativenumber = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.opt.termguicolors = true
 
 require('plugin-manager')
 
