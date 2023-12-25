@@ -8,10 +8,12 @@ return {
       { "L3MON4D3/LuaSnip", version = 'v2.*', build = "make install_jsregexp" }, -- snippet engine
       "saadparwaiz1/cmp_luasnip", -- for autocompletion
       "rafamadriz/friendly-snippets", -- useful snippets
+      "onsails/lspkind.nvim", -- vs-code like pictograms
     },
     config = function ()
       local cmp = require('cmp')
       local luasnip = require('luasnip')
+      local lspkind = require("lspkind")
 
       -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
       require("luasnip.loaders.from_vscode").lazy_load()
@@ -41,6 +43,12 @@ return {
           { name = "buffer" }, -- text within current buffer
           { name = "path" }, -- file system paths
         }),
+        formatting = {
+          format = lspkind.cmp_format({
+            maxwidth = 50,
+            ellipsis_char = "...",
+          }),
+        },
       })
     end
   },
