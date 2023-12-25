@@ -12,4 +12,3 @@ vim.g.maplocalleader = " "
 
 require('plugin-manager')
 require('mappings')
-

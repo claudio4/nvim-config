@@ -1,7 +1,7 @@
 local map = vim.keymap.set
 local noremap = { noremap = true, silent = true }
 
-map("n", "<Esc>", "<cmd>bog<CR>", { desc = "Clear highlights", noremap = true, silent = true })
+map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlights", noremap = true, silent = true })
 
  -- switch between windows
 map("n", "<C-h>", "<C-w>h", { desc = "Window left", noremap = true, silent = true })
@@ -28,7 +28,7 @@ map("n", "<C-s>", "<cmd>w<CR>", { desc = "Save file", noremap = true, silent = t
 
 -- Manage buffer
 map("n", "<leader>b", "<cmd>enew<CR>", { desc = "New buffer", noremap = true, silent = true })
-map("n", "<leader>x", "<cmd>BDelete! this<CR>", { desc = "Close current buffer", noremap = true, silent = true })
+map("n", "<leader>x", "<cmd>confirm bdelete<CR>", { desc = "Close current buffer", noremap = true, silent = true })
 
 -- Splits
 map("n", "<leader>h", "<cmd>split %<CR>", { desc = "Horizontal split", noremap = true, silent = true })
