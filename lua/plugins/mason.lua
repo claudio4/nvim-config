@@ -19,6 +19,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     events = { "VeryLazy" },
+    dependencies = { "williamboman/mason.nvim" },
     opts = {
       ensure_installed = {
         "cssls",
@@ -39,6 +40,7 @@ return {
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     events = { "VeryLazy" },
+    dependencies = { "williamboman/mason.nvim" },
     opts = {
       ensure_installed = {
         "codespell",
