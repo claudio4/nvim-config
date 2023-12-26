@@ -43,6 +43,13 @@ map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "List old files",
 map("n", "<leader>fc", "<cmd>Telescope grep_string<CR>", { desc = "Find string under cursor with Telescope", noremap = true, silent = true })
 map("n", "<F1>", "<cmd>Telescope commands<CR>", { desc = "Command runner inside Telescope", noremap = true, silent = true })
 
+-- Comments
+map("n", "<leader>/", function() require("Comment.api").toggle.linewise.current() end, { desc = "Comment toggle (linewise)", noremap = true, silent = true })
+map("n", "<leader>?", function() require("Comment.api").toggle.blockwise.current() end, { desc = "Comment toggle (linewise)", noremap = true, silent = true })
+
+map("x", "<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { desc = "Comment toggle (linewise)", noremap = true, silent = true })
+map("x", "<leader>?", "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>" , { desc = "Comment toggle (linewise)", noremap = true, silent = true })
+
 local M = {}
 
 M.register_lsp_mappings = function(bufnr)
