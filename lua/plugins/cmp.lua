@@ -18,6 +18,26 @@ return {
       -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
       require("luasnip.loaders.from_vscode").lazy_load()
 
+      local tabHandler = function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        elseif require("luasnip").expand_or_jumpable() then
+          vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+        else
+          fallback()
+        end
+      end
+
+      local shiftTabHandler = function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        elseif require("luasnip").jumpable(-1) then
+          vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+        else
+          fallback()
+        end
+      end
+
       cmp.setup({
         -- completion = {
         --   completeopt = "menu,menuone,preview,noselect",
@@ -28,13 +48,18 @@ return {
           end,
         },
         mapping = cmp.mapping.preset.insert({
-          ["<S-Tab>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-          ["<Tab>"] = cmp.mapping.select_next_item(), -- next suggestion
+          ["<C-j>"] = cmp.mapping.select_prev_item(),
+          ["<C-k>"] = cmp.mapping.select_next_item(),
+          ["<S-Tab>"] = cmp.mapping(shiftTabHandler, { "i", "s" }),
+          ["<Tab>"] = cmp.mapping(tabHandler, { "i", "s" }),
           ["<C-b>"] = cmp.mapping.scroll_docs(-4),
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-          ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-          ["<CR>"] = cmp.mapping.confirm({ select = false }),
+          ["<C-e>"] = cmp.mapping.abort(),
+          ["<CR>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Insert,
+            select = false
+          }),
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" }, -- LSP
