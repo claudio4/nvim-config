@@ -50,6 +50,10 @@ map("n", "<leader>?", function() require("Comment.api").toggle.blockwise.current
 map("x", "<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", { desc = "Comment toggle (linewise)", noremap = true, silent = true })
 map("x", "<leader>?", "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>" , { desc = "Comment toggle (linewise)", noremap = true, silent = true })
 
+-- Tree
+map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file tree", noremap = true, silent = true})
+map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "Focus file tree", noremap = true, silent = true})
+
 local M = {}
 
 M.register_lsp_mappings = function(bufnr)
