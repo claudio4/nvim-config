@@ -34,4 +34,21 @@ M.FormatOnSaveToggle = function(args)
 end
 vim.api.nvim_create_user_command("FormatOnSaveToggle", M.FormatOnSaveToggle, { desc = "Toggle autoformat on save" })
 
+M.TermToggle = function()
+	require("betterTerm").open()
+end
+vim.api.nvim_create_user_command("TermToggle", M.TermToggle, { desc = "Toggle main terminal" })
+
+M.TermSelect = function()
+	require("betterTerm").select()
+end
+vim.api.nvim_create_user_command("TermSelect", M.TermSelect, { desc = "Select a terminal" })
+
+local nextTermId = 2
+M.TermCreate = function()
+	require("betterTerm").open(nextTermId)
+	nextTermId = nextTermId + 1
+end
+vim.api.nvim_create_user_command("TermCreate", M.TermCreate, { desc = "Create new terminal" })
+
 return M

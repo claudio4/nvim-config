@@ -132,6 +132,11 @@ map(
 	{ desc = "Command runner inside Telescope", noremap = true, silent = true }
 )
 
+-- Terminal
+map({ "n", "t" }, "<C-]>", commands.TermToggle, { desc = "Toggle terminal", noremap = false, silent = true })
+map("n", "<leader>tt", commands.TermSelect, { desc = "Select terminal", noremap = true, silent = true })
+map("n", "<leader>tn", commands.TermCreate, { desc = "New terminal", noremap = true, silent = true })
+
 -- LSP
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP mappings",
