@@ -5,6 +5,12 @@ local noremap = { noremap = true, silent = true }
 
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlights", noremap = true, silent = true })
 
+-- Move in insert mode
+map("i", "<C-h>", "<Left>", { desc = "Move cursor left", noremap = true, silent = true })
+map("i", "<C-l>", "<Right>", { desc = "Move cursor right", noremap = true, silent = true })
+map("i", "<C-j>", "<Down>", { desc = "Move cursor down", noremap = true, silent = true })
+map("i", "<C-k>", "<Up>", { desc = "WMove cursor up", noremap = true, silent = true })
+
 -- switch between windows
 map("n", "<C-h>", "<C-w>h", { desc = "Window left", noremap = true, silent = true })
 map("n", "<C-l>", "<C-w>l", { desc = "Window right", noremap = true, silent = true })
