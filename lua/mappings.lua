@@ -34,6 +34,31 @@ map("n", "<leader>x", "<cmd>confirm bdelete<CR>", { desc = "Close current buffer
 map("n", "<leader>h", "<cmd>split %<CR>", { desc = "Horizontal split", noremap = true, silent = true })
 map("n", "<leader>v", "<cmd>vsplit %<CR>", { desc = "Vertical split", noremap = true, silent = true })
 
+
+-- Comments
+map("n", "<leader>/", function() require("Comment.api").toggle.linewise.current() end,
+  { desc = "Comment toggle (linewise)", noremap = true, silent = true })
+map("n", "<leader>?", function() require("Comment.api").toggle.blockwise.current() end,
+  { desc = "Comment toggle (linewise)", noremap = true, silent = true })
+
+map("x", "<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+  { desc = "Comment toggle (linewise)", noremap = true, silent = true })
+map("x", "<leader>?", "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
+  { desc = "Comment toggle (linewise)", noremap = true, silent = true })
+
+-- Debug (DAP)
+map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "Add breakpoint at line", noremap = true, silent = true })
+map("n", "<leader>dr", "<cmd>DapContinue<CR>", { desc = "Run or continue the debugger", noremap = true, silent = true })
+map("n", "<F5>", "<cmd>DapContinue<CR>", { desc = "Run or continue the debugger", noremap = true, silent = true })
+map("n", "<leader>do", "<cmd>DapStepOver<CR>", { desc = "Step over line in debugger", noremap = true, silent = true })
+map("n", "<leader>di", "<cmd>DapStepInto<CR>", { desc = "Step into line in debugger", noremap = true, silent = true })
+map("n", "<leader>df", "<cmd>DapStepOut<CR>", { desc = "Step out of line in debugger", noremap = true, silent = true })
+map("n", "<leader>dx", "<cmd>DapTerminate<CR>", { desc = "Terminate debugger", noremap = true, silent = true })
+
+-- Tree
+map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file tree", noremap = true, silent = true })
+map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "Focus file tree", noremap = true, silent = true })
+
 -- Telescope
 map("n", "<leader>ff", "<cmd>Telescope find_files<CR>",
   { desc = "Find files with Telescope", noremap = true, silent = true })
@@ -49,21 +74,7 @@ map("n", "<leader>fc", "<cmd>Telescope grep_string<CR>",
 map("n", "<F1>", "<cmd>Telescope commands<CR>",
   { desc = "Command runner inside Telescope", noremap = true, silent = true })
 
--- Comments
-map("n", "<leader>/", function() require("Comment.api").toggle.linewise.current() end,
-  { desc = "Comment toggle (linewise)", noremap = true, silent = true })
-map("n", "<leader>?", function() require("Comment.api").toggle.blockwise.current() end,
-  { desc = "Comment toggle (linewise)", noremap = true, silent = true })
-
-map("x", "<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-  { desc = "Comment toggle (linewise)", noremap = true, silent = true })
-map("x", "<leader>?", "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
-  { desc = "Comment toggle (linewise)", noremap = true, silent = true })
-
--- Tree
-map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file tree", noremap = true, silent = true })
-map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "Focus file tree", noremap = true, silent = true })
-
+-- LSP
 vim.api.nvim_create_autocmd('LspAttach', {
   desc = "LSP mappings",
   callback = function(event)

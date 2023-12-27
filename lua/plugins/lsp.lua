@@ -55,5 +55,38 @@ return {
         },
       })
     end
-  }
+  },
+  {
+    "ray-x/go.nvim",
+    ft = {"go", 'gomod'},
+    dependencies = {
+      "neovim/nvim-lspconfig",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    -- build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+    config = function()
+      local capabilities = require("lsp-utils").capabilities
+
+      require('go').setup({
+        lsp_cfg = {
+          capabilities = capabilities,
+        },
+      })
+    end,
+  },
+  {
+    "pmizio/typescript-tools.nvim",
+    ft = { "typescript", "javascript"},
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = function()
+      local capabilities = require("lsp-utils").capabilities
+
+      return {
+        capabilities = capabilities,
+        settings = {
+          expose_as_code_action = "all",
+        },
+      }
+    end,
+  },
 }
