@@ -1,3 +1,5 @@
+local commands = require("commands")
+
 local map = vim.keymap.set
 local noremap = { noremap = true, silent = true }
 
@@ -34,20 +36,34 @@ map("n", "<leader>x", "<cmd>confirm bdelete<CR>", { desc = "Close current buffer
 map("n", "<leader>h", "<cmd>split %<CR>", { desc = "Horizontal split", noremap = true, silent = true })
 map("n", "<leader>v", "<cmd>vsplit %<CR>", { desc = "Vertical split", noremap = true, silent = true })
 
-
 -- Comments
-map("n", "<leader>/", function() require("Comment.api").toggle.linewise.current() end,
-  { desc = "Comment toggle (linewise)", noremap = true, silent = true })
-map("n", "<leader>?", function() require("Comment.api").toggle.blockwise.current() end,
-  { desc = "Comment toggle (linewise)", noremap = true, silent = true })
+map("n", "<leader>/", function()
+	require("Comment.api").toggle.linewise.current()
+end, { desc = "Comment toggle (linewise)", noremap = true, silent = true })
+map("n", "<leader>?", function()
+	require("Comment.api").toggle.blockwise.current()
+end, { desc = "Comment toggle (linewise)", noremap = true, silent = true })
 
-map("x", "<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-  { desc = "Comment toggle (linewise)", noremap = true, silent = true })
-map("x", "<leader>?", "<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
-  { desc = "Comment toggle (linewise)", noremap = true, silent = true })
+map(
+	"x",
+	"<leader>/",
+	"<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+	{ desc = "Comment toggle (linewise)", noremap = true, silent = true }
+)
+map(
+	"x",
+	"<leader>?",
+	"<ESC><cmd>lua require('Comment.api').toggle.blockwise(vim.fn.visualmode())<CR>",
+	{ desc = "Comment toggle (linewise)", noremap = true, silent = true }
+)
 
 -- Debug (DAP)
-map("n", "<leader>db", "<cmd>DapToggleBreakpoint<CR>", { desc = "Add breakpoint at line", noremap = true, silent = true })
+map(
+	"n",
+	"<leader>db",
+	"<cmd>DapToggleBreakpoint<CR>",
+	{ desc = "Add breakpoint at line", noremap = true, silent = true }
+)
 map("n", "<leader>dr", "<cmd>DapContinue<CR>", { desc = "Run or continue the debugger", noremap = true, silent = true })
 map("n", "<F5>", "<cmd>DapContinue<CR>", { desc = "Run or continue the debugger", noremap = true, silent = true })
 map("n", "<leader>do", "<cmd>DapStepOver<CR>", { desc = "Step over line in debugger", noremap = true, silent = true })
@@ -55,69 +71,105 @@ map("n", "<leader>di", "<cmd>DapStepInto<CR>", { desc = "Step into line in debug
 map("n", "<leader>df", "<cmd>DapStepOut<CR>", { desc = "Step out of line in debugger", noremap = true, silent = true })
 map("n", "<leader>dx", "<cmd>DapTerminate<CR>", { desc = "Terminate debugger", noremap = true, silent = true })
 
+-- Format
+map({ "n", "x" }, "<leader>cf", "Format", { desc = "Format code", noremap = true, silent = true })
+map("n", "<leader>cF", function()
+	commands.FormatOnSaveToggle({})
+end, { desc = "Toggle autoformatting on save", noremap = true, silent = true })
+
 -- Tree
 map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file tree", noremap = true, silent = true })
 map("n", "<leader>e", "<cmd>NvimTreeFocus<CR>", { desc = "Focus file tree", noremap = true, silent = true })
 
 -- Telescope
-map("n", "<leader>ff", "<cmd>Telescope find_files<CR>",
-  { desc = "Find files with Telescope", noremap = true, silent = true })
-map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>",
-  { desc = "Live grep with Telescope", noremap = true, silent = true })
-map("n", "<leader>fb", "<cmd>Telescope buffers<CR>",
-  { desc = "Find buffer with Telescope", noremap = true, silent = true })
-map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>",
-  { desc = "Explore help tags with Telescope", noremap = true, silent = true })
+map(
+	"n",
+	"<leader>ff",
+	"<cmd>Telescope find_files<CR>",
+	{ desc = "Find files with Telescope", noremap = true, silent = true }
+)
+map(
+	"n",
+	"<leader>fg",
+	"<cmd>Telescope live_grep<CR>",
+	{ desc = "Live grep with Telescope", noremap = true, silent = true }
+)
+map(
+	"n",
+	"<leader>fb",
+	"<cmd>Telescope buffers<CR>",
+	{ desc = "Find buffer with Telescope", noremap = true, silent = true }
+)
+map(
+	"n",
+	"<leader>fh",
+	"<cmd>Telescope help_tags<CR>",
+	{ desc = "Explore help tags with Telescope", noremap = true, silent = true }
+)
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "List old files", noremap = true, silent = true })
-map("n", "<leader>fc", "<cmd>Telescope grep_string<CR>",
-  { desc = "Find string under cursor with Telescope", noremap = true, silent = true })
-map("n", "<F1>", "<cmd>Telescope commands<CR>",
-  { desc = "Command runner inside Telescope", noremap = true, silent = true })
+map(
+	"n",
+	"<leader>fc",
+	"<cmd>Telescope grep_string<CR>",
+	{ desc = "Find string under cursor with Telescope", noremap = true, silent = true }
+)
+map(
+	"n",
+	"<leader>fn",
+	"<cmd>Telescope notify<CR>",
+	{ desc = "Explore past notifcations", noremap = true, silent = true }
+)
+map(
+	"n",
+	"<F1>",
+	"<cmd>Telescope commands<CR>",
+	{ desc = "Command runner inside Telescope", noremap = true, silent = true }
+)
 
 -- LSP
-vim.api.nvim_create_autocmd('LspAttach', {
-  desc = "LSP mappings",
-  callback = function(event)
-    local opts = { buffer = event.buf }
+vim.api.nvim_create_autocmd("LspAttach", {
+	desc = "LSP mappings",
+	callback = function(event)
+		local opts = { buffer = event.buf }
 
-    opts.desc = "LSP Hover information"
-    map('n', 'K', vim.lsp.buf.hover, opts)
+		opts.desc = "LSP Hover information"
+		map("n", "K", vim.lsp.buf.hover, opts)
 
-    opts.desc = "Go to definition"
-    map('n', 'gd', vim.lsp.buf.definition, opts)
+		opts.desc = "Go to definition"
+		map("n", "gd", vim.lsp.buf.definition, opts)
 
-    opts.desc = "Go to declaration"
-    map('n', 'gD', vim.lsp.buf.declaration, opts)
+		opts.desc = "Go to declaration"
+		map("n", "gD", vim.lsp.buf.declaration, opts)
 
-    opts.desc = "List implemetations"
-    map('n', 'gi', vim.lsp.buf.implementation, opts)
+		opts.desc = "List implemetations"
+		map("n", "gi", vim.lsp.buf.implementation, opts)
 
-    opts.desc = "Go to type definition"
-    map('n', 'go', vim.lsp.buf.type_definition, opts)
+		opts.desc = "Go to type definition"
+		map("n", "go", vim.lsp.buf.type_definition, opts)
 
-    opts.desc = "List references"
-    map('n', 'gr', vim.lsp.buf.references, opts)
+		opts.desc = "List references"
+		map("n", "gr", vim.lsp.buf.references, opts)
 
-    opts.desc = "Show signature help"
-    map('n', '<leader>cs', vim.lsp.buf.signature_help, opts)
+		opts.desc = "Show signature help"
+		map("n", "<leader>cs", vim.lsp.buf.signature_help, opts)
 
-    opts.desc = "Rename symbol"
-    map('n', '<F2>', vim.lsp.buf.rename, opts)
+		opts.desc = "Rename symbol"
+		map("n", "<F2>", vim.lsp.buf.rename, opts)
 
-    opts.desc = "Format code"
-    map({ 'n', 'x' }, '<F3>', vim.lsp.buf.format, opts)
-    map({ 'n', 'x' }, '<leader>cf', vim.lsp.buf.format, opts)
+		opts.desc = "Format code (LSP)"
+		map({ "n", "x" }, "<F3>", vim.lsp.buf.format, opts)
+		-- map({ 'n', 'x' }, '<leader>cf', vim.lsp.buf.format, opts)
 
-    opts.desc = "Code actions"
-    map('n', '<leader>ca', vim.lsp.buf.code_action, opts)
+		opts.desc = "Code actions"
+		map("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 
-    opts.desc = "Show code diagnostics"
-    map('n', '<leader>cd', vim.diagnostic.open_float, opts)
+		opts.desc = "Show code diagnostics"
+		map("n", "<leader>cd", vim.diagnostic.open_float, opts)
 
-    opts.desc = "Go to previous diagnostic"
-    map('n', '[d', vim.diagnostic.goto_prev, opts)
+		opts.desc = "Go to previous diagnostic"
+		map("n", "[d", vim.diagnostic.goto_prev, opts)
 
-    opts.desc = "Go to next diagnostic"
-    map('n', ']d', vim.diagnostic.goto_next, opts)
-  end,
+		opts.desc = "Go to next diagnostic"
+		map("n", "]d", vim.diagnostic.goto_next, opts)
+	end,
 })

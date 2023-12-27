@@ -10,5 +10,6 @@ vim.wo.relativenumber = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-require('plugin-manager')
-require('mappings')
+require("plugin-manager")
+require("commands")
+require("mappings")
