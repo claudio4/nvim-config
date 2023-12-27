@@ -77,6 +77,23 @@ map("n", "<leader>di", "<cmd>DapStepInto<CR>", { desc = "Step into line in debug
 map("n", "<leader>df", "<cmd>DapStepOut<CR>", { desc = "Step out of line in debugger", noremap = true, silent = true })
 map("n", "<leader>dx", "<cmd>DapTerminate<CR>", { desc = "Terminate debugger", noremap = true, silent = true })
 
+-- Flash
+map({ "n", "x", "o" }, "s", function()
+	require("flash").jump()
+end, { desc = "Flash", noremap = true, silent = true })
+map({ "n", "x", "o" }, "S", function()
+	require("flash").treesitter()
+end, { desc = "Flash Treesitter", noremap = true, silent = true })
+map("o", "r", function()
+	require("flash").remote()
+end, { desc = "Remote Flash", noremap = true, silent = true })
+map({ "o", "x" }, "R", function()
+	require("flash").treesitter_search()
+end, { desc = "Treesitter Search", noremap = true, silent = true })
+map("c", "<c-s>", function()
+	require("flash").toggle()
+end, { desc = "Toggle Flash Search", noremap = true, silent = true })
+
 -- Format
 map({ "n", "x" }, "<leader>cf", "Format", { desc = "Format code", noremap = true, silent = true })
 map("n", "<leader>cF", function()
