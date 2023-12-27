@@ -54,6 +54,7 @@ return {
 				-- go
 				"gopls",
 				"goimports-reviser",
+				"golangci-lint-langserver",
 
 				-- yaml
 				"yaml-language-server",
