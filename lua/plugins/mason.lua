@@ -25,6 +25,7 @@ return {
 			ensure_installed = {
 				-- general
 				"codespell",
+				"tree-sitter-cli",
 
 				-- markdown
 				"marksman",
