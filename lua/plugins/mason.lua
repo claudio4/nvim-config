@@ -40,7 +40,7 @@ return {
 				"html-lsp",
 				"typescript-language-server",
 				"prettierd",
-				"eslint_d",
+				"eslint-lsp",
 				"js-debug-adapter",
 				"json-lsp",
 

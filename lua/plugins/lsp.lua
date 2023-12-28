@@ -20,6 +20,7 @@ return {
 			local servers = {
 				"cssls",
 				"dockerls",
+				"eslint",
 				-- "gopls", Handled by ray-x/go plugin
 				"golangci_lint_ls",
 				"html",

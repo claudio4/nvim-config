@@ -9,11 +9,11 @@ return {
 				bash = { "shellcheck", "codespell" },
 				go = { "codespell" },
 				html = { "codespell" },
-				javascript = { "eslint_d", "codespell" },
+				javascript = { "codespell" },
 				rust = { "codespell" },
 				sh = { "shellcheck", "codespell" },
 				sql = { "sqlfluff" },
-				typescript = { "eslint_d", "codespell" },
+				typescript = { "codespell" },
 			}
 
 			local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
