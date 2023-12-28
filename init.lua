@@ -1,5 +1,7 @@
-vim.opt.expandtab = true
 vim.opt.autoindent = true
+vim.opt.expandtab = true
+vim.o.foldmethod = "indent"
+vim.o.foldlevelstart = 99
 vim.opt.smartindent = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
