@@ -11,6 +11,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.opt.clipboard = "unnamedplus"
 
 require("plugin-manager")
 require("commands")
