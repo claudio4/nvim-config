@@ -34,8 +34,20 @@ M.FormatOnSaveToggle = function(args)
 end
 vim.api.nvim_create_user_command("FormatOnSaveToggle", M.FormatOnSaveToggle, { desc = "Toggle autoformat on save" })
 
+M.ToggleCopilot = function()
+	local notify = require("notify")
 
+	local msg = "Copilot has been"
+	if vim.g.copilot_enabled then
+		vim.g.copilot_enabled = false
+		vim.cmd("Copilot disable")
+		msg = msg .. " disabled."
+	else
+		vim.g.copilot_enabled = true
+		vim.cmd("Copilot enable")
+		msg = msg .. " enabled."
+	end
 
+	notify(msg, "INFO", { title = "Github Copilot", timeout = 500 })
 end
-
 return M

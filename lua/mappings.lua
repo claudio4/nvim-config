@@ -149,6 +149,15 @@ map(
   { desc = "Command runner inside Telescope", noremap = true, silent = true }
 )
 
+-- Copilot
+map("n", "<leader>coo", "<cmd>Copilot<CR>", { desc = "Open Copilot panel", noremap = true, silent = true })
+map("n", "<leader>cot", commands.ToggleCopilot, { desc = "Toggle Copilot", noremap = true, silent = true })
+map(
+	"i",
+	"<C-y>",
+	'copilot#Accept("")',
+	{ desc = "Accept GH Copilot suggestion", silent = true, expr = true, replace_keycodes = false }
+)
 
 -- LSP
 vim.api.nvim_create_autocmd("LspAttach", {
