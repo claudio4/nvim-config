@@ -3,7 +3,7 @@
 -- Add any additional options here
 
 if vim.g.neovide then
-  vim.g.guifont = "CaskaydiaCove_Nerd_Font:h13"
+  vim.g.guifont = "Cascadia_Code:h13"
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_cursor_animate_command_line = false
   local keymapOpts = {
