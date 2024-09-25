@@ -52,6 +52,7 @@
   "onedarkpro.nvim": { "branch": "main", "commit": "b542d3a18b99d49161b007c9f90530101ff8bedc" },
   "persistence.nvim": { "branch": "main", "commit": "f6aad7dde7fcf54148ccfc5f622c6d5badd0cc3d" },
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
+  "precognition.nvim": { "branch": "main", "commit": "8a81c310b4e76b4884fc5350a5741cf683c645c7" },
   "rustaceanvim": { "branch": "master", "commit": "047f9c9d8cd2861745eb9de6c1570ee0875aa795" },
   "smart-open.nvim": { "branch": "0.2.x", "commit": "87626ee8748b9bba22093adec7bb58c63e7214f0" },
   "sqlite.lua": { "branch": "master", "commit": "d0ffd703b56d090d213b497ed4eb840495f14a11" },
