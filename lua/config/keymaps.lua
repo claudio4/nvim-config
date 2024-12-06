@@ -4,3 +4,4 @@
 local map = vim.keymap.set
 
 map("n", "<leader>fp", "<cmd>Telescope commands<CR>", { desc = "Find Prompt" })
+map("n", "<leader>fk", "<cmd>Telescope keymaps<CR>", { desc = "Find Keymap" })
