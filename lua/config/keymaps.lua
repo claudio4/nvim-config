@@ -3,5 +3,12 @@
 -- Add any additional keymaps here
 local map = vim.keymap.set
 
+-- Telescope/find
 map("n", "<leader>fp", "<cmd>Telescope commands<CR>", { desc = "Find Prompt" })
 map("n", "<leader>fk", "<cmd>Telescope keymaps<CR>", { desc = "Find Keymap" })
+
+-- ui
+map("n", "<leader>ut", "<cmd>ToggleColorscheme<CR>", { desc = "Toggle between dark/light theme" })
+
+-- text edit
+map("i", "<C-BS>", "<C-w>", { noremap = true, desc = "delete whole word" })

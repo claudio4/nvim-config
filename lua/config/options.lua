@@ -6,6 +6,7 @@ if vim.g.neovide then
   vim.g.guifont = "Cascadia_Code:h13"
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_cursor_animate_command_line = false
+  vim.g.neovide_theme = "auto"
   local keymapOpts = {
     silent = true,
     noremap = true,
