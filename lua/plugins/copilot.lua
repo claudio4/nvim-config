@@ -28,7 +28,7 @@ return {
               msg = msg .. " enabled."
             end
 
-            vim.notify(msg, "INFO", { title = "Github Copilot", timeout = 500 })
+            vim.notify(msg, vim.log.levels.INFO, { title = "Github Copilot", timeout = 500 })
           end,
           desc = "Toggle Copilot",
         },
